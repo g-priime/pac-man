@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const grid = document.querySelector(".grid");
   const scoreDisplay = document.getElementById("score");
+  const winDisplay = document.getElementById("win-status");
   const width = 28; //28 x 28 = 784 squares
   const startPauseButton = document.querySelector("#start-pause-button");
 
@@ -245,7 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
       //setTimeout(function () {
       //alert("Game Over!");
       //}, 500);
-      scoreDisplay.innerHTML = "GAME OVER";
+      winDisplay.innerHTML = "GAME OVER";
     }
   }
 
@@ -254,7 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (score >= 274) {
       ghosts.forEach((ghost) => clearInterval(ghost.timerId));
       document.removeEventListener("keyup", movePacman);
-      scoreDisplay.innerHTML = "YOU WIN!";
+      winDisplay.innerHTML = "YOU WIN!";
     }
   }
 
