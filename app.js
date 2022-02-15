@@ -193,7 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ghost.currentIndex += direction;
         //redraw the ghost in the new safe space
         squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
-
         //else find a new direction to try
       } else direction = directions[Math.floor(Math.random() * directions.length)];
     }, ghost.speed);
