@@ -72,6 +72,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   squares[pacmanCurrentIndex].classList.add("pac-man");
 
+  //move pacman
+  function movePacman(e) {
+    squares[pacmanCurrentIndex].classList.remove("pac-man");
+
+    switch (e.keyCode) {
+      case 37:
+        if (pacmanCurrentIndex % width !== 0) pacmanCurrentIndex -= 1;
+        break;
+      case 38:
+        if (pacmanCurrentIndex - width >= 0) pacmanCurrentIndex -= width;
+        break;
+      case 39:
+        if (pacmanCurrentIndex % width < width - 1) pacmanCurrentIndex += 1;
+        break;
+      case 40:
+        if (pacmanCurrentIndex + width < width * width)
+          pacmanCurrentIndex += width;
+        break;
+    }
+
+    squares[pacmanCurrentIndex].classList.add("pac-man");
+
+    //pacDotEaten()
+    //powerPelletEaten()
+    //checkForGameOver
+    //checkForWin()
+  }
+  document.addEventListener("keyup", movePacman);
+
+
+
 
   
 });
