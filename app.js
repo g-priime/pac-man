@@ -2,7 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const grid = document.querySelector(".grid");
   const scoreDisplay = document.getElementById("score");
   const width = 28; //28 x 28 = 784 squares
+  const startPauseButton = document.querySelector("#start-pause-button");
+
   let score = 0;
+  let gameInPlay = false;
 
   //layout of grid and what is in the squares
   const layout = [
@@ -131,9 +134,8 @@ document.addEventListener("DOMContentLoaded", () => {
     pacDotEaten();
     powerPelletEaten();
     checkForGameOver;
-    checkForWin()
+    checkForWin();
   }
-  document.addEventListener("keyup", movePacman);
 
   //what happens when Pac-man eats a pac-dot
   function pacDotEaten() {
@@ -183,9 +185,6 @@ document.addEventListener("DOMContentLoaded", () => {
     squares[ghost.currentIndex].classList.add(ghost.className);
     squares[ghost.currentIndex].classList.add("ghost");
   });
-
-  //move the ghosts randomly
-  ghosts.forEach((ghost) => moveGhost(ghost));
 
   //write the function to move the ghosts
   function moveGhost(ghost) {
@@ -244,18 +243,46 @@ document.addEventListener("DOMContentLoaded", () => {
       ghosts.forEach((ghost) => clearInterval(ghost.timerId));
       document.removeEventListener("keyup", movePacman);
       //setTimeout(function () {
-        //alert("Game Over!");
+      //alert("Game Over!");
       //}, 500);
-      scoreDisplay.innerHTML = 'GAME OVER'
+      scoreDisplay.innerHTML = "GAME OVER";
     }
   }
 
   //check for a win
   function checkForWin() {
-      if (score === 274) {
-          ghosts.forEach(ghost => clearInterval(ghost.timerId))
-          document.removeEventListener('keyup', movePacman)
-          scoreDisplay.innerHTML = 'YOU WIN!'
-      }
+    if (score === 274) {
+      ghosts.forEach((ghost) => clearInterval(ghost.timerId));
+      document.removeEventListener("keyup", movePacman);
+      scoreDisplay.innerHTML = "YOU WIN!";
+    }
   }
+
+  startPauseButton.addEventListener("click", () => {
+    /*
+    if (timerId) {
+      clearInterval(timerId);
+      clearInterval(outcomeTimerId);
+      outcomeTimerId = null;
+      timerId = null;
+      document.removeEventListener("keyup", moveFrog);
+    } else {
+      timerId = setInterval(autoMoveElements, 1000);
+      outcomeTimerId = setInterval(checkOutComes, 50);
+      document.addEventListener("keyup", moveFrog);
+    }
+    */
+
+    if (gameInPlay) {
+      document.removeEventListener("keyup", movePacman);
+      ghosts.forEach((ghost) => clearInterval(ghost.timerId));
+      gameInPlay = false;
+    } else {
+      document.addEventListener("keyup", movePacman);
+
+      //move the ghosts randomly
+      ghosts.forEach((ghost) => moveGhost(ghost));
+      gameInPlay = true;
+    }
+  });
 });
