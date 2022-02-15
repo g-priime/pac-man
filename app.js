@@ -57,13 +57,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
       //add layout to the board
       if (layout[i] === 0) {
-          squares[i].classList.add('pac-dot')
+        squares[i].classList.add("pac-dot");
       } else if (layout[i] === 1) {
-          squares[i].classList.add('wall')
+        squares[i].classList.add("wall");
       } else if (layout[i] === 3) {
-          squares[i].classList.add('power-pellet')
+        squares[i].classList.add("power-pellet");
       }
     }
   }
-  createBoard()
+  createBoard();
+
+  //starting position of pac-man
+  let pacmanCurrentIndex = 490;
+
+  squares[pacmanCurrentIndex].classList.add("pac-man");
+
+
+  
 });
