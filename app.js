@@ -259,27 +259,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   startPauseButton.addEventListener("click", () => {
-    /*
-    if (timerId) {
-      clearInterval(timerId);
-      clearInterval(outcomeTimerId);
-      outcomeTimerId = null;
-      timerId = null;
-      document.removeEventListener("keyup", moveFrog);
-    } else {
-      timerId = setInterval(autoMoveElements, 1000);
-      outcomeTimerId = setInterval(checkOutComes, 50);
-      document.addEventListener("keyup", moveFrog);
-    }
-    */
-
     if (gameInPlay) {
       document.removeEventListener("keyup", movePacman);
       ghosts.forEach((ghost) => clearInterval(ghost.timerId));
       gameInPlay = false;
     } else {
       document.addEventListener("keyup", movePacman);
-
       //move the ghosts randomly
       ghosts.forEach((ghost) => moveGhost(ghost));
       gameInPlay = true;
