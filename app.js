@@ -60,6 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
         squares[i].classList.add("pac-dot");
       } else if (layout[i] === 1) {
         squares[i].classList.add("wall");
+      } else if (layout[i] === 2) {
+          squares[i].classList.add('ghost-lair')
       } else if (layout[i] === 3) {
         squares[i].classList.add("power-pellet");
       }
@@ -78,16 +80,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     switch (e.keyCode) {
       case 37:
-        if (pacmanCurrentIndex % width !== 0 && !squares[pacmanCurrentIndex -1].classList.contains('wall')) pacmanCurrentIndex -= 1;
+        if (
+          pacmanCurrentIndex % width !== 0 &&
+          !squares[pacmanCurrentIndex - 1].classList.contains("wall") &&
+          !squares[pacmanCurrentIndex - 1].classList.contains("ghost-lair")
+        )
+          pacmanCurrentIndex -= 1;
         break;
       case 38:
-        if (pacmanCurrentIndex - width >= 0 && !squares[pacmanCurrentIndex -width].classList.contains('wall')) pacmanCurrentIndex -= width;
+        if (
+          pacmanCurrentIndex - width >= 0 &&
+          !squares[pacmanCurrentIndex - width].classList.contains("wall") &&
+          !squares[pacmanCurrentIndex - width].classList.contains("ghost-lair")
+        )
+          pacmanCurrentIndex -= width;
         break;
       case 39:
-        if (pacmanCurrentIndex % width < width - 1 && !squares[pacmanCurrentIndex +1].classList.contains('wall')) pacmanCurrentIndex += 1;
+        if (
+          pacmanCurrentIndex % width < width - 1 &&
+          !squares[pacmanCurrentIndex + 1].classList.contains("wall") &&
+          !squares[pacmanCurrentIndex + 1].classList.contains("ghost-lair")
+        )
+          pacmanCurrentIndex += 1;
         break;
       case 40:
-        if (pacmanCurrentIndex + width < width * width && !squares[pacmanCurrentIndex +width].classList.contains('wall'))
+        if (
+          pacmanCurrentIndex + width < width * width &&
+          !squares[pacmanCurrentIndex + width].classList.contains("wall") &&
+          !squares[pacmanCurrentIndex + width].classList.contains("ghost-lair")
+        )
           pacmanCurrentIndex += width;
         break;
     }
@@ -100,9 +121,4 @@ document.addEventListener("DOMContentLoaded", () => {
     //checkForWin()
   }
   document.addEventListener("keyup", movePacman);
-
-
-
-
-
 });
