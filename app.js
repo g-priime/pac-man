@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (layout[i] === 1) {
         squares[i].classList.add("wall");
       } else if (layout[i] === 2) {
-          squares[i].classList.add('ghost-lair')
+        squares[i].classList.add("ghost-lair");
       } else if (layout[i] === 3) {
         squares[i].classList.add("power-pellet");
       }
@@ -86,6 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
           !squares[pacmanCurrentIndex - 1].classList.contains("ghost-lair")
         )
           pacmanCurrentIndex -= 1;
+
+        //check if pacman is in the left exit
+        if (pacmanCurrentIndex - 1 === 363) {
+          pacmanCurrentIndex = 391;
+        }
+
         break;
       case 38:
         if (
@@ -102,6 +108,12 @@ document.addEventListener("DOMContentLoaded", () => {
           !squares[pacmanCurrentIndex + 1].classList.contains("ghost-lair")
         )
           pacmanCurrentIndex += 1;
+
+        //check if pacman is in the right exit
+        if (pacmanCurrentIndex + 1 === 392) {
+          pacmanCurrentIndex = 364;
+        }
+
         break;
       case 40:
         if (
