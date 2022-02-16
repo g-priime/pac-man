@@ -10,27 +10,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //layout of grid and what is in the squares
   const layout = [
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 
-    1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 
-    1, 3, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 3, 1, 
-    1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 
-    1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 
-    1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 
-    1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 
-    1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1, 
-    1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 2, 2, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1, 
-    1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 2, 2, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1, 
-    4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 1, 1, 1, 2, 2, 1, 1, 1, 4, 0, 0, 0, 4, 4, 4, 4, 4, 4, 
-    1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 2, 2, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1, 
-    1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1, 
-    1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1, 
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 1, 
-    1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 
-    1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 
-    1, 3, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1,
+    1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 3, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0,
+    1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 3, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0,
+    1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,
+    1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1,
+    1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 2, 2, 1, 1,
+    1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 2,
+    2, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 1,
+    1, 1, 2, 2, 1, 1, 1, 4, 0, 0, 0, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 0, 1,
+    1, 4, 1, 1, 1, 2, 2, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 0, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1,
+    1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0,
+    0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1,
+    0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,
+    1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 3, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 3, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1,
     1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0,
@@ -245,37 +247,65 @@ document.addEventListener("DOMContentLoaded", () => {
     const directions = [-1, +1, width, -width];
     //let directions = checkPositions(ghost);
     //let direction = directions[Math.floor(Math.random() * directions.length)];
-    let direction;
+    let direction = checkPositions(ghost);
     let moved = false;
 
     ghost.timerId = setInterval(function () {
       moved = false;
-      //directions = checkPositions(ghost);
-      for (i = 0; i < directions.length; i++) {
-        direction = directions[i];
-        //if the next square your ghost is going to go in dowes NOT contain a wall and a ghost, you can go there
-        if (
-          !squares[ghost.currentIndex + direction].classList.contains("wall") &&
-          !squares[ghost.currentIndex + direction].classList.contains(
-            "ghost"
-          ) &&
-          !(ghost.currentIndex + direction === ghost.prevIndex) &&
-          !moved
-        ) {
-          //you can go here
-          //remove all ghost related classes
-          squares[ghost.currentIndex].classList.remove(
-            ghost.className,
-            "ghost",
-            "scared-ghost"
-          );
-          ghost.prevIndex = ghost.currentIndex;
-          //change the current index to the new safe square
-          ghost.currentIndex += direction;
-          //redraw the ghost in the new safe space
-          squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
-          //else find a new direction to try
-          moved = true;
+
+      direction = checkPositions(ghost);
+      console.log(direction)
+      if (
+        !squares[ghost.currentIndex + direction].classList.contains("wall") &&
+        !squares[ghost.currentIndex + direction].classList.contains("ghost") &&
+        !(ghost.currentIndex + direction === ghost.prevIndex) &&
+        !moved
+      ) {
+        //you can go here
+        //remove all ghost related classes
+        squares[ghost.currentIndex].classList.remove(
+          ghost.className,
+          "ghost",
+          "scared-ghost"
+        );
+        ghost.prevIndex = ghost.currentIndex;
+        //change the current index to the new safe square
+        ghost.currentIndex += direction;
+        //redraw the ghost in the new safe space
+        squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
+        //else find a new direction to try
+        moved = true;
+      }
+
+      if (!moved) {
+        for (i = 0; i < directions.length; i++) {
+          direction = directions[i];
+          //if the next square your ghost is going to go in dowes NOT contain a wall and a ghost, you can go there
+          if (
+            !squares[ghost.currentIndex + direction].classList.contains(
+              "wall"
+            ) &&
+            !squares[ghost.currentIndex + direction].classList.contains(
+              "ghost"
+            ) &&
+            !(ghost.currentIndex + direction === ghost.prevIndex) &&
+            !moved
+          ) {
+            //you can go here
+            //remove all ghost related classes
+            squares[ghost.currentIndex].classList.remove(
+              ghost.className,
+              "ghost",
+              "scared-ghost"
+            );
+            ghost.prevIndex = ghost.currentIndex;
+            //change the current index to the new safe square
+            ghost.currentIndex += direction;
+            //redraw the ghost in the new safe space
+            squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
+            //else find a new direction to try
+            moved = true;
+          }
         }
       }
 
@@ -343,16 +373,32 @@ document.addEventListener("DOMContentLoaded", () => {
     const yDifference = checkYPositions(ghost);
 
     if (xDifference > 0 && yDifference > 0) {
-      return [-1, -width];
+      if (Math.abs(xDifference) > Math.abs(yDifference)) {
+        return -1;
+      } else {
+        return -width;
+      }
     } else if (xDifference > 0 && yDifference < 0) {
-      return [-1, width];
+      if (Math.abs(xDifference) > Math.abs(yDifference)) {
+        return -1;
+      } else {
+        return width;
+      }
     } else if (xDifference < 0 && yDifference < 0) {
-      return [1, width];
+      if (Math.abs(xDifference) > Math.abs(yDifference)) {
+        return 1;
+      } else {
+        return width;
+      }
     } else if (xDifference < 0 && yDifference > 0) {
-      return [1, -width];
+      if (Math.abs(xDifference) > Math.abs(yDifference)) {
+        return 1;
+      } else {
+        return -width;
+      }
     }
 
-    return [-1, +1, width, -width];
+    return -width;
   }
 
   function checkXPositions(ghost) {
