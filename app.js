@@ -177,9 +177,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ghosts = [
     new Ghost("blinky", 348, 250),
-    new Ghost("pinky", 376, 400),
-    new Ghost("inky", 351, 300),
-    new Ghost("clyde", 379, 500),
+    //new Ghost("pinky", 376, 400),
+    //new Ghost("inky", 351, 300),
+    //new Ghost("clyde", 379, 500),
   ];
 
   //draw my ghosts onto the grid
@@ -236,7 +236,39 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       checkForGameOver();
       checkForWin();
+
+      checkPositions(ghost);
     }, ghost.speed);
+  }
+
+  function checkPositions(ghost) {
+    //console.log(ghost.currentIndex);
+    //console.log(pacmanCurrentIndex);
+
+    checkXPositions(ghost);
+    checkYPositions(ghost);
+  }
+
+  function checkXPositions(ghost) {
+    const ghostXPosition = ghost.currentIndex % width;
+    //console.log(ghostXPosition);
+
+    const packmanXPosition = pacmanCurrentIndex % width;
+    //console.log(packmanXPosition);
+
+    const xDifference = ghostXPosition - packmanXPosition;
+    //console.log(xDifference);
+  }
+
+  function checkYPositions(ghost) {
+    const ghostYPosition = Math.trunc(ghost.currentIndex / width);
+    //console.log(ghostYPosition);
+
+    const packmanYPosition = Math.trunc(pacmanCurrentIndex / width);
+    //console.log(packmanYPosition);
+
+    const yDifference = ghostYPosition - packmanYPosition;
+    console.log(yDifference);
   }
 
   //check for a game over
