@@ -177,9 +177,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ghosts = [
     new Ghost("blinky", 348, 250),
-    //new Ghost("pinky", 376, 400),
-    //new Ghost("inky", 351, 300),
-    //new Ghost("clyde", 379, 500),
+    new Ghost("pinky", 376, 400),
+    new Ghost("inky", 351, 300),
+    new Ghost("clyde", 379, 500),
   ];
 
   //draw my ghosts onto the grid
@@ -268,6 +268,13 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         directions = checkPositions(ghost);
         direction = directions[Math.floor(Math.random() * directions.length)];
+        if (
+          squares[ghost.currentIndex + direction].classList.contains("wall") ||
+          squares[ghost.currentIndex + direction].classList.contains("ghost")
+        ) {
+          directions = [-1, +1, width, -width];
+          direction = directions[Math.floor(Math.random() * directions.length)];
+        }
       }
 
       //if the ghost is currently scared
@@ -291,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
         scoreDisplay.innerHTML = score;
         squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
       }
-      console.log(directions)
+      console.log(directions);
 
       checkForGameOver();
       checkForWin();
