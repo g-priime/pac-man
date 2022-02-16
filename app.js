@@ -310,7 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (!moved) {
-        for (i = 0; i < directions.length; i++) {
+        for (i = 3; i >= 0; i--) {
           direction = directions[i];
           //if the next square your ghost is going to go in dowes NOT contain a wall and a ghost, you can go there
           if (
