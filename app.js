@@ -177,9 +177,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ghosts = [
     new Ghost("blinky", 348, 250),
-    new Ghost("pinky", 376, 400),
-    new Ghost("inky", 351, 300),
-    new Ghost("clyde", 379, 500),
+    //new Ghost("pinky", 376, 400),
+    //new Ghost("inky", 351, 300),
+    //new Ghost("clyde", 379, 500),
   ];
 
   //draw my ghosts onto the grid
@@ -189,6 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   //write the function to move the ghosts
+  /*
   function moveGhost(ghost) {
     const directions = [-1, +1, width, -width];
     let direction = directions[Math.floor(Math.random() * directions.length)];
@@ -238,6 +239,64 @@ document.addEventListener("DOMContentLoaded", () => {
       checkForWin();
     }, ghost.speed);
   }
+*/
+
+  //function for ghosts to chase
+  function moveGhost(ghost) {
+    //const directions = [-1, +1, width, -width];
+    let directions = checkPositions(ghost);
+    let direction = directions[Math.floor(Math.random() * directions.length)];
+
+    ghost.timerId = setInterval(function () {
+      //if the next square your ghost is going to go in dowes NOT contain a wall and a ghost, you can go there
+      if (
+        !squares[ghost.currentIndex + direction].classList.contains("wall") &&
+        !squares[ghost.currentIndex + direction].classList.contains("ghost")
+      ) {
+        //you can go here
+        //remove all ghost related classes
+        squares[ghost.currentIndex].classList.remove(
+          ghost.className,
+          "ghost",
+          "scared-ghost"
+        );
+        //change the current index to the new safe square
+        ghost.currentIndex += direction;
+        //redraw the ghost in the new safe space
+        squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
+        //else find a new direction to try
+      } else {
+        directions = checkPositions(ghost);
+        direction = directions[Math.floor(Math.random() * directions.length)];
+      }
+
+      //if the ghost is currently scared
+      if (ghost.isScared) {
+        squares[ghost.currentIndex].classList.add("scared-ghost");
+      }
+
+      //if the ghost is scared and pacman runs into it
+      if (
+        (ghost.isScared &&
+          squares[ghost.currentIndex].classList.contains("pac-man")) ||
+        squares[pacmanCurrentIndex].classList.contains("scared-ghost")
+      ) {
+        squares[ghost.currentIndex].classList.remove(
+          ghost.className,
+          "ghost",
+          "scared-ghost"
+        );
+        ghost.currentIndex = ghost.startIndex;
+        score += 100;
+        scoreDisplay.innerHTML = score;
+        squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
+      }
+      console.log(directions)
+
+      checkForGameOver();
+      checkForWin();
+    }, ghost.speed);
+  }
 
   function checkPositions(ghost) {
     const xDifference = checkXPositions(ghost);
@@ -248,10 +307,10 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (xDifference > 0 && yDifference < 0) {
       return [-1, width];
     } else if (xDifference < 0 && yDifference < 0) {
-      return [1, -width];
-    } else if (xDifference < 0 && yDifference > 0) {
       return [1, width];
-    } 
+    } else if (xDifference < 0 && yDifference > 0) {
+      return [1, -width];
+    }
 
     return [-1, +1, width, -width];
   }
