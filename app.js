@@ -136,16 +136,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     pacDotEaten();
     powerPelletEaten();
-    checkForGameOver;
+    checkForGameOver();
     checkForWin();
   }
 
   //what happens when Pac-man eats a pac-dot
   function pacDotEaten() {
     if (squares[pacmanCurrentIndex].classList.contains("pac-dot")) {
-      score++;
+      //score++;
       scoreDisplay.innerHTML = score;
-      pelletCount++;
+      //pelletCount++;
       pelletCountDisplay.innerHTML = pelletCount;
       squares[pacmanCurrentIndex].classList.remove("pac-dot");
     }
@@ -154,9 +154,9 @@ document.addEventListener("DOMContentLoaded", () => {
   //what happens when you eat a power-pellet
   function powerPelletEaten() {
     if (squares[pacmanCurrentIndex].classList.contains("power-pellet")) {
-      score += 10;
+      //score += 10;
       scoreDisplay.innerHTML = score;
-      pelletCount += 10;
+      //pelletCount += 10;
       pelletCountDisplay.innerHTML = pelletCount;
       ghosts.forEach((ghost) => (ghost.isScared = true));
       setTimeout(unScareGhosts, 10000);
@@ -183,9 +183,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   ghosts = [
-    new Ghost("blinky", 349, 250),
-    new Ghost("pinky", 377, 400),
-    new Ghost("inky", 350, 300),
+    //new Ghost("blinky", 349, 250),
+    //new Ghost("pinky", 377, 400),
+    //new Ghost("inky", 350, 300),
     new Ghost("clyde", 378, 500),
   ];
 
@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       //console.log(directions);
 
-      checkForGameOver(ghost);
+      checkForGameOver();
       checkForWin();
     }, ghost.speed);
   }
@@ -419,11 +419,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //check for a game over
-  function checkForGameOver(ghost) {
+  function checkForGameOver() {
     if (
-      (ghost.currentIndex == pacmanCurrentIndex ||
-        squares[ghost.currentIndex].classList.contains("pac-man") ||
-        squares[pacmanCurrentIndex].classList.contains("ghost")) &&
+      squares[pacmanCurrentIndex].classList.contains("ghost") &&
       !squares[pacmanCurrentIndex].classList.contains("scared-ghost")
     ) {
       ghosts.forEach((ghost) => clearInterval(ghost.timerId));
@@ -453,10 +451,10 @@ document.addEventListener("DOMContentLoaded", () => {
       document.addEventListener("keyup", movePacman);
       //move the ghosts randomly
       //ghosts.forEach((ghost) => moveGhost(ghost));
-      moveGhostRandomly(ghosts[0]); //blinky-red
-      moveGhostChasePacman(ghosts[1]); //pinky-pink
-      moveGhostChasePacman(ghosts[2]); //inky
-      moveGhostChasePacman(ghosts[3]); //clyde
+      //moveGhostRandomly(ghosts[0]); //blinky-red
+      //moveGhostChasePacman(ghosts[1]); //pinky-pink
+      //moveGhostChasePacman(ghosts[2]); //inky
+      moveGhostChasePacman(ghosts[0]); //clyde
       gameInPlay = true;
     }
   });
