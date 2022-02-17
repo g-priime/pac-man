@@ -201,7 +201,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let direction = directions[Math.floor(Math.random() * directions.length)];
 
     ghost.timerId = setInterval(function () {
-      checkForGhostKill(ghost);
       //if the next square your ghost is going to go in dowes NOT contain a wall and a ghost, you can go there
       if (
         !squares[ghost.currentIndex + direction].classList.contains("wall") &&
@@ -242,7 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let moved = false;
 
     ghost.timerId = setInterval(function () {
-      checkForGhostKill(ghost);
       moved = false;
 
       direction = checkPositions(ghost);
