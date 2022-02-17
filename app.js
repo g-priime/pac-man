@@ -143,9 +143,9 @@ document.addEventListener("DOMContentLoaded", () => {
   //what happens when Pac-man eats a pac-dot
   function pacDotEaten() {
     if (squares[pacmanCurrentIndex].classList.contains("pac-dot")) {
-      //score++;
+      score++;
       scoreDisplay.innerHTML = score;
-      //pelletCount++;
+      pelletCount++;
       pelletCountDisplay.innerHTML = pelletCount;
       squares[pacmanCurrentIndex].classList.remove("pac-dot");
     }
@@ -154,9 +154,9 @@ document.addEventListener("DOMContentLoaded", () => {
   //what happens when you eat a power-pellet
   function powerPelletEaten() {
     if (squares[pacmanCurrentIndex].classList.contains("power-pellet")) {
-      //score += 10;
+      score += 10;
       scoreDisplay.innerHTML = score;
-      //pelletCount += 10;
+      pelletCount += 10;
       pelletCountDisplay.innerHTML = pelletCount;
       ghosts.forEach((ghost) => (ghost.isScared = true));
       setTimeout(unScareGhosts, 10000);
@@ -201,6 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let direction = directions[Math.floor(Math.random() * directions.length)];
 
     ghost.timerId = setInterval(function () {
+      checkForGhostKill(ghost);
       //if the next square your ghost is going to go in dowes NOT contain a wall and a ghost, you can go there
       if (
         !squares[ghost.currentIndex + direction].classList.contains("wall") &&
@@ -241,6 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let moved = false;
 
     ghost.timerId = setInterval(function () {
+      checkForGhostKill(ghost);
       moved = false;
 
       direction = checkPositions(ghost);
