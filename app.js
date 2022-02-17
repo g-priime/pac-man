@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const grid = document.querySelector(".grid");
   const scoreDisplay = document.getElementById("score");
+  const pelletCountDisplay = document.getElementById("pellet-count");
   const winDisplay = document.getElementById("win-status");
   const width = 28; //28 x 28 = 784 squares
   const startPauseButton = document.querySelector("#start-pause-button");
 
   let score = 0;
+  let pelletCount = 0;
   let gameInPlay = false;
 
   //layout of grid and what is in the squares
@@ -143,6 +145,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (squares[pacmanCurrentIndex].classList.contains("pac-dot")) {
       score++;
       scoreDisplay.innerHTML = score;
+      pelletCount++;
+      pelletCountDisplay.innerHTML = pelletCount;
       squares[pacmanCurrentIndex].classList.remove("pac-dot");
     }
   }
@@ -152,6 +156,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (squares[pacmanCurrentIndex].classList.contains("power-pellet")) {
       score += 10;
       scoreDisplay.innerHTML = score;
+      pelletCount += 10;
+      pelletCountDisplay.innerHTML = pelletCount;
       ghosts.forEach((ghost) => (ghost.isScared = true));
       setTimeout(unScareGhosts, 10000);
       squares[pacmanCurrentIndex].classList.remove("power-pellet");
@@ -254,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
       moved = false;
 
       direction = checkPositions(ghost);
-      console.log(direction)
+      console.log(direction);
       if (
         !squares[ghost.currentIndex + direction].classList.contains("wall") &&
         !squares[ghost.currentIndex + direction].classList.contains("ghost") &&
@@ -349,8 +355,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (
         (ghost.isScared &&
           (ghost.currentIndex == pacmanCurrentIndex ||
-          squares[ghost.currentIndex].classList.contains("pac-man")) ||
-        squares[pacmanCurrentIndex].classList.contains("scared-ghost"))
+            squares[ghost.currentIndex].classList.contains("pac-man"))) ||
+        squares[pacmanCurrentIndex].classList.contains("scared-ghost")
       ) {
         squares[ghost.currentIndex].classList.remove(
           ghost.className,
@@ -419,7 +425,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (
       (ghost.currentIndex == pacmanCurrentIndex ||
         squares[ghost.currentIndex].classList.contains("pac-man") ||
-      squares[pacmanCurrentIndex].classList.contains("ghost")) &&
+        squares[pacmanCurrentIndex].classList.contains("ghost")) &&
       !squares[pacmanCurrentIndex].classList.contains("scared-ghost")
     ) {
       ghosts.forEach((ghost) => clearInterval(ghost.timerId));
@@ -433,7 +439,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //check for a win
   function checkForWin() {
-    if (score >= 274) {
+    if (pelletCount >= 274) {
       ghosts.forEach((ghost) => clearInterval(ghost.timerId));
       document.removeEventListener("keyup", movePacman);
       winDisplay.innerHTML = "YOU WIN!";
