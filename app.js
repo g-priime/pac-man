@@ -348,8 +348,9 @@ document.addEventListener("DOMContentLoaded", () => {
       //if the ghost is scared and pacman runs into it
       if (
         (ghost.isScared &&
+          (ghost.currentIndex == pacmanCurrentIndex ||
           squares[ghost.currentIndex].classList.contains("pac-man")) ||
-        squares[pacmanCurrentIndex].classList.contains("scared-ghost")
+        squares[pacmanCurrentIndex].classList.contains("scared-ghost"))
       ) {
         squares[ghost.currentIndex].classList.remove(
           ghost.className,
@@ -363,7 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       //console.log(directions);
 
-      checkForGameOver();
+      checkForGameOver(ghost);
       checkForWin();
     }, ghost.speed);
   }
@@ -414,9 +415,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //check for a game over
-  function checkForGameOver() {
+  function checkForGameOver(ghost) {
     if (
-      squares[pacmanCurrentIndex].classList.contains("ghost") &&
+      (ghost.currentIndex == pacmanCurrentIndex ||
+        squares[ghost.currentIndex].classList.contains("pac-man") ||
+      squares[pacmanCurrentIndex].classList.contains("ghost")) &&
       !squares[pacmanCurrentIndex].classList.contains("scared-ghost")
     ) {
       ghosts.forEach((ghost) => clearInterval(ghost.timerId));
