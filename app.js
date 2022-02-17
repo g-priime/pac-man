@@ -213,6 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "ghost",
           "scared-ghost"
         );
+        ghost.prevIndex = ghost.currentIndex;
         //change the current index to the new safe square
         ghost.currentIndex += direction;
         //redraw the ghost in the new safe space
@@ -437,7 +438,7 @@ document.addEventListener("DOMContentLoaded", () => {
       //move the ghosts randomly
       //ghosts.forEach((ghost) => moveGhost(ghost));
       moveGhostRandomly(ghosts[0]); //blinky-red
-      moveGhostChasePacman(ghosts[1]); //pinky-pink
+      moveGhostRandomly(ghosts[1]); //pinky-pink
       moveGhostChasePacman(ghosts[2]); //inky
       moveGhostChasePacman(ghosts[3]); //clyde
       gameInPlay = true;
