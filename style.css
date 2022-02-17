@@ -1,9 +1,18 @@
+body {
+    background-color: black;
+}
+
+h3 {
+    background-color: white;
+}
+
 .grid {
     display: flex;
     flex-wrap: wrap;
     width: 560px;
     height: 560px;
     border: solid black;
+    background-color: black;
 }
 
 .grid div {
@@ -13,7 +22,7 @@
 
 .pac-dot {
     background-color: green;
-    border: 5px solid white;
+    border: 5px solid black;
     box-sizing: border-box;
 }
 
