@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   //function to move ghost randomly
-  function moveGhost(ghost) {
+  function moveGhostRandomly(ghost) {
     const directions = [-1, +1, width, -width];
     let direction = directions[Math.floor(Math.random() * directions.length)];
 
@@ -245,261 +245,9 @@ document.addEventListener("DOMContentLoaded", () => {
       checkForWin();
     }, ghost.speed);
   }
-            
 
-  function movePinky(ghost) {
-    const directions = [-1, +1, width, -width];
-    //let directions = checkPositions(ghost);
-    //let direction = directions[Math.floor(Math.random() * directions.length)];
-    let direction = checkPositions(ghost);
-    let moved = false;
-
-    ghost.timerId = setInterval(function () {
-      moved = false;
-
-      direction = checkPositions(ghost);
-      console.log(direction);
-      if (
-        !squares[ghost.currentIndex + direction].classList.contains("wall") &&
-        !squares[ghost.currentIndex + direction].classList.contains("ghost") &&
-        !(ghost.currentIndex + direction === ghost.prevIndex) &&
-        !moved
-      ) {
-        //you can go here
-        //remove all ghost related classes
-        squares[ghost.currentIndex].classList.remove(
-          ghost.className,
-          "ghost",
-          "scared-ghost"
-        );
-        ghost.prevIndex = ghost.currentIndex;
-        //change the current index to the new safe square
-        ghost.currentIndex += direction;
-        //redraw the ghost in the new safe space
-        squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
-        //else find a new direction to try
-        moved = true;
-      }
-
-      if (!moved) {
-        for (i = 0; i < directions.length; i++) {
-          direction = directions[i];
-          //if the next square your ghost is going to go in dowes NOT contain a wall and a ghost, you can go there
-          if (
-            !squares[ghost.currentIndex + direction].classList.contains(
-              "wall"
-            ) &&
-            !squares[ghost.currentIndex + direction].classList.contains(
-              "ghost"
-            ) &&
-            !(ghost.currentIndex + direction === ghost.prevIndex) &&
-            !moved
-          ) {
-            //you can go here
-            //remove all ghost related classes
-            squares[ghost.currentIndex].classList.remove(
-              ghost.className,
-              "ghost",
-              "scared-ghost"
-            );
-            ghost.prevIndex = ghost.currentIndex;
-            //change the current index to the new safe square
-            ghost.currentIndex += direction;
-            //redraw the ghost in the new safe space
-            squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
-            //else find a new direction to try
-            moved = true;
-          }
-        }
-      }
-
-      if (!moved) {
-        for (i = 3; i >= 0; i--) {
-          direction = directions[i];
-          //if the next square your ghost is going to go in dowes NOT contain a wall and a ghost, you can go there
-          if (
-            !squares[ghost.currentIndex + direction].classList.contains(
-              "wall"
-            ) &&
-            !squares[ghost.currentIndex + direction].classList.contains(
-              "ghost"
-            ) &&
-            !moved
-          ) {
-            //you can go here
-            //remove all ghost related classes
-            squares[ghost.currentIndex].classList.remove(
-              ghost.className,
-              "ghost",
-              "scared-ghost"
-            );
-            ghost.prevIndex = ghost.currentIndex;
-            //change the current index to the new safe square
-            ghost.currentIndex += direction;
-            //redraw the ghost in the new safe space
-            squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
-            //else find a new direction to try
-            moved = true;
-          }
-        }
-      }
-
-      //if the ghost is currently scared
-      if (ghost.isScared) {
-        squares[ghost.currentIndex].classList.add("scared-ghost");
-      }
-
-      //if the ghost is scared and pacman runs into it
-      if (
-        (ghost.isScared &&
-          (ghost.currentIndex == pacmanCurrentIndex ||
-            squares[ghost.currentIndex].classList.contains("pac-man"))) ||
-        squares[pacmanCurrentIndex].classList.contains("scared-ghost")
-      ) {
-        squares[ghost.currentIndex].classList.remove(
-          ghost.className,
-          "ghost",
-          "scared-ghost"
-        );
-        ghost.currentIndex = ghost.startIndex;
-        score += 100;
-        scoreDisplay.innerHTML = score;
-        squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
-      }
-      //console.log(directions);
-
-      checkForGameOver(ghost);
-      checkForWin();
-    }, ghost.speed);
-  }
-
-  function moveInky(ghost) {
-    const directions = [-1, +1, width, -width];
-    //let directions = checkPositions(ghost);
-    //let direction = directions[Math.floor(Math.random() * directions.length)];
-    let direction = checkPositions(ghost);
-    let moved = false;
-
-    ghost.timerId = setInterval(function () {
-      moved = false;
-
-      direction = checkPositions(ghost);
-      console.log(direction);
-      if (
-        !squares[ghost.currentIndex + direction].classList.contains("wall") &&
-        !squares[ghost.currentIndex + direction].classList.contains("ghost") &&
-        !(ghost.currentIndex + direction === ghost.prevIndex) &&
-        !moved
-      ) {
-        //you can go here
-        //remove all ghost related classes
-        squares[ghost.currentIndex].classList.remove(
-          ghost.className,
-          "ghost",
-          "scared-ghost"
-        );
-        ghost.prevIndex = ghost.currentIndex;
-        //change the current index to the new safe square
-        ghost.currentIndex += direction;
-        //redraw the ghost in the new safe space
-        squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
-        //else find a new direction to try
-        moved = true;
-      }
-
-      if (!moved) {
-        for (i = 0; i < directions.length; i++) {
-          direction = directions[i];
-          //if the next square your ghost is going to go in dowes NOT contain a wall and a ghost, you can go there
-          if (
-            !squares[ghost.currentIndex + direction].classList.contains(
-              "wall"
-            ) &&
-            !squares[ghost.currentIndex + direction].classList.contains(
-              "ghost"
-            ) &&
-            !(ghost.currentIndex + direction === ghost.prevIndex) &&
-            !moved
-          ) {
-            //you can go here
-            //remove all ghost related classes
-            squares[ghost.currentIndex].classList.remove(
-              ghost.className,
-              "ghost",
-              "scared-ghost"
-            );
-            ghost.prevIndex = ghost.currentIndex;
-            //change the current index to the new safe square
-            ghost.currentIndex += direction;
-            //redraw the ghost in the new safe space
-            squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
-            //else find a new direction to try
-            moved = true;
-          }
-        }
-      }
-
-      if (!moved) {
-        for (i = 3; i >= 0; i--) {
-          direction = directions[i];
-          //if the next square your ghost is going to go in dowes NOT contain a wall and a ghost, you can go there
-          if (
-            !squares[ghost.currentIndex + direction].classList.contains(
-              "wall"
-            ) &&
-            !squares[ghost.currentIndex + direction].classList.contains(
-              "ghost"
-            ) &&
-            !moved
-          ) {
-            //you can go here
-            //remove all ghost related classes
-            squares[ghost.currentIndex].classList.remove(
-              ghost.className,
-              "ghost",
-              "scared-ghost"
-            );
-            ghost.prevIndex = ghost.currentIndex;
-            //change the current index to the new safe square
-            ghost.currentIndex += direction;
-            //redraw the ghost in the new safe space
-            squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
-            //else find a new direction to try
-            moved = true;
-          }
-        }
-      }
-
-      //if the ghost is currently scared
-      if (ghost.isScared) {
-        squares[ghost.currentIndex].classList.add("scared-ghost");
-      }
-
-      //if the ghost is scared and pacman runs into it
-      if (
-        (ghost.isScared &&
-          (ghost.currentIndex == pacmanCurrentIndex ||
-            squares[ghost.currentIndex].classList.contains("pac-man"))) ||
-        squares[pacmanCurrentIndex].classList.contains("scared-ghost")
-      ) {
-        squares[ghost.currentIndex].classList.remove(
-          ghost.className,
-          "ghost",
-          "scared-ghost"
-        );
-        ghost.currentIndex = ghost.startIndex;
-        score += 100;
-        scoreDisplay.innerHTML = score;
-        squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
-      }
-      //console.log(directions);
-
-      checkForGameOver(ghost);
-      checkForWin();
-    }, ghost.speed);
-  }
-
-  function moveClyde(ghost) {
+  //moves ghost with tendancy towards pacman
+  function moveGhostChasePacman(ghost) {
     const directions = [-1, +1, width, -width];
     //let directions = checkPositions(ghost);
     //let direction = directions[Math.floor(Math.random() * directions.length)];
@@ -705,10 +453,10 @@ document.addEventListener("DOMContentLoaded", () => {
       document.addEventListener("keyup", movePacman);
       //move the ghosts randomly
       //ghosts.forEach((ghost) => moveGhost(ghost));
-      moveGhost(ghosts[0]);
-      movePinky(ghosts[1]);
-      moveInky(ghosts[2]);
-      moveClyde(ghosts[3]);
+      moveGhostRandomly(ghosts[0]); //blinky-red
+      moveGhostChasePacman(ghosts[1]); //pinky-pink
+      moveGhostChasePacman(ghosts[2]); //inky
+      moveGhostChasePacman(ghosts[3]); //clyde
       gameInPlay = true;
     }
   });
