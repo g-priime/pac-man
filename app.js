@@ -344,7 +344,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function checkForGhostKill(ghost) {
     //if the ghost is scared and pacman runs into it
     if (
-      squares[pacmanCurrentIndex].classList.contains("scared-ghost") ||
+      ghost.currentIndex == pacmanCurrentIndex ||
       ghost.prevIndex == pacmanCurrentIndex
     ) {
       squares[ghost.currentIndex].classList.remove(
