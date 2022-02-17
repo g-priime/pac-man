@@ -372,25 +372,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const xDifference = checkXPositions(ghost);
     const yDifference = checkYPositions(ghost);
 
-    if (xDifference > 0 && yDifference > 0) {
+    if (xDifference >= 0 && yDifference >= 0) {
       if (Math.abs(xDifference) > Math.abs(yDifference)) {
         return -1;
       } else {
         return -width;
       }
-    } else if (xDifference > 0 && yDifference < 0) {
+    } else if (xDifference >= 0 && yDifference <= 0) {
       if (Math.abs(xDifference) > Math.abs(yDifference)) {
         return -1;
       } else {
         return width;
       }
-    } else if (xDifference < 0 && yDifference < 0) {
+    } else if (xDifference <= 0 && yDifference <= 0) {
       if (Math.abs(xDifference) > Math.abs(yDifference)) {
         return 1;
       } else {
         return width;
       }
-    } else if (xDifference < 0 && yDifference > 0) {
+    } else if (xDifference <= 0 && yDifference >= 0) {
       if (Math.abs(xDifference) > Math.abs(yDifference)) {
         return 1;
       } else {
