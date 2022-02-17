@@ -30,6 +30,10 @@ h3 {
     background-color: blue;
 }
 
+.invisible-wall {
+    background-color: black;
+}
+
 .power-pellet {
     background-color: green;
     border-radius: 10px;
