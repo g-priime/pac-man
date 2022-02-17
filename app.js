@@ -183,9 +183,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   ghosts = [
-    //new Ghost("blinky", 349, 250),
-    //new Ghost("pinky", 377, 400),
-    //new Ghost("inky", 350, 300),
+    new Ghost("blinky", 349, 250),
+    new Ghost("pinky", 377, 400),
+    new Ghost("inky", 350, 300),
     new Ghost("clyde", 378, 500),
   ];
 
@@ -225,22 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
         squares[ghost.currentIndex].classList.add("scared-ghost");
       }
 
-      //if the ghost is scared and pacman runs into it
-      if (
-        (ghost.isScared &&
-          squares[ghost.currentIndex].classList.contains("pac-man")) ||
-        squares[pacmanCurrentIndex].classList.contains("scared-ghost")
-      ) {
-        squares[ghost.currentIndex].classList.remove(
-          ghost.className,
-          "ghost",
-          "scared-ghost"
-        );
-        ghost.currentIndex = ghost.startIndex;
-        score += 100;
-        scoreDisplay.innerHTML = score;
-        squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
-      }
+      checkForGhostKill(ghost);
       checkForGameOver(ghost);
       checkForWin();
     }, ghost.speed);
@@ -349,28 +334,28 @@ document.addEventListener("DOMContentLoaded", () => {
         squares[ghost.currentIndex].classList.add("scared-ghost");
       }
 
-      //if the ghost is scared and pacman runs into it
-      if (
-        (ghost.isScared &&
-          (ghost.currentIndex == pacmanCurrentIndex ||
-            squares[ghost.currentIndex].classList.contains("pac-man"))) ||
-        squares[pacmanCurrentIndex].classList.contains("scared-ghost")
-      ) {
-        squares[ghost.currentIndex].classList.remove(
-          ghost.className,
-          "ghost",
-          "scared-ghost"
-        );
-        ghost.currentIndex = ghost.startIndex;
-        score += 100;
-        scoreDisplay.innerHTML = score;
-        squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
-      }
-      //console.log(directions);
-
+      checkForGhostKill(ghost);
       checkForGameOver();
       checkForWin();
     }, ghost.speed);
+  }
+
+  function checkForGhostKill(ghost) {
+    //if the ghost is scared and pacman runs into it
+    if (
+      squares[pacmanCurrentIndex].classList.contains("scared-ghost") ||
+      ghost.prevIndex == pacmanCurrentIndex
+    ) {
+      squares[ghost.currentIndex].classList.remove(
+        ghost.className,
+        "ghost",
+        "scared-ghost"
+      );
+      ghost.currentIndex = ghost.startIndex;
+      score += 100;
+      scoreDisplay.innerHTML = score;
+      squares[ghost.currentIndex].classList.add(ghost.className, "ghost");
+    }
   }
 
   function checkPositions(ghost) {
@@ -451,10 +436,10 @@ document.addEventListener("DOMContentLoaded", () => {
       document.addEventListener("keyup", movePacman);
       //move the ghosts randomly
       //ghosts.forEach((ghost) => moveGhost(ghost));
-      //moveGhostRandomly(ghosts[0]); //blinky-red
-      //moveGhostChasePacman(ghosts[1]); //pinky-pink
-      //moveGhostChasePacman(ghosts[2]); //inky
-      moveGhostChasePacman(ghosts[0]); //clyde
+      moveGhostRandomly(ghosts[0]); //blinky-red
+      moveGhostChasePacman(ghosts[1]); //pinky-pink
+      moveGhostChasePacman(ghosts[2]); //inky
+      moveGhostChasePacman(ghosts[3]); //clyde
       gameInPlay = true;
     }
   });
