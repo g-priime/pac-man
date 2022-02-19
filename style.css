@@ -1,70 +1,75 @@
 body {
-    background-color: black;
+  background-color: black;
+}
+
+.container {
+  padding-left: 480px;
+  padding-right: 480px;
 }
 
 h3 {
-    background-color: white;
+  background-color: white;
 }
 
 .grid {
-    display: flex;
-    flex-wrap: wrap;
-    width: 560px;
-    height: 560px;
-    border: solid black;
-    background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+  width: 560px;
+  height: 560px;
+  border: solid black;
+  background-color: black;
 }
 
 .grid div {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .pac-dot {
-    background-color: green;
-    border: 5px solid black;
-    box-sizing: border-box;
+  background-color: green;
+  border: 5px solid black;
+  box-sizing: border-box;
 }
 
 .wall {
-    background-color: blue;
+  background-color: blue;
 }
 
 .invisible-wall {
-    background-color: black;
+  background-color: black;
 }
 
 .power-pellet {
-    background-color: green;
-    border-radius: 10px;
+  background-color: green;
+  border-radius: 10px;
 }
 
 .blinky {
-    background-color: red;
-    border: 0px;
+  background-color: red;
+  border: 0px;
 }
 
 .pinky {
-    background-color: pink;
-    border: 0px;
+  background-color: pink;
+  border: 0px;
 }
 
 .inky {
-    background-color: brown;
-    border: 0px;
+  background-color: brown;
+  border: 0px;
 }
 
 .clyde {
-    background-color: orange;
-    border: 0px;
+  background-color: orange;
+  border: 0px;
 }
 
 .scared-ghost {
-    background-color: aquamarine;
-    border: 0px;
+  background-color: aquamarine;
+  border: 0px;
 }
 
 .pac-man {
-    background-color: yellow;
-    border-radius: 10px;
+  background-color: yellow;
+  border-radius: 10px;
 }
