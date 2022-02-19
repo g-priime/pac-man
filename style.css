@@ -11,6 +11,13 @@ h3 {
   background-color: white;
 }
 
+#start-pause-button {
+    background-color: rgb(49, 49, 61);
+    color: rgb(172, 108, 108);
+    align-self: center;
+    margin-left: 85%;
+}
+
 .grid {
   display: flex;
   flex-wrap: wrap;
