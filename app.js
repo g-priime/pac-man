@@ -347,10 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function checkForGhostKill(ghost) {
     //if the ghost is scared and pacman runs into it
-    if (
-      ghost.currentIndex == pacmanCurrentIndex ||
-      ghost.prevIndex == pacmanCurrentIndex
-    ) {
+    if (squares[pacmanCurrentIndex].classList.contains("scared-ghost")) {
       squares[ghost.currentIndex].classList.remove(
         ghost.className,
         "ghost",
@@ -416,9 +413,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
       ghosts.forEach((ghost) => clearInterval(ghost.timerId));
       document.removeEventListener("keyup", movePacman);
-      //setTimeout(function () {
-      //alert("Game Over!");
-      //}, 500);
       winDisplay.innerHTML = "GAME OVER";
     }
   }
