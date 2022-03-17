@@ -81,6 +81,28 @@ h3 {
   border-radius: 10px;
 }
 
+@media screen and (max-width: 1200px) {
+  body {
+    background-color: lightblue;
+  }
+
+  .container {
+    padding-left: 240px;
+    padding-right: 240px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  body {
+    background-color: lightblue;
+  }
+
+  .container {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
 @media screen and (max-width: 600px) {
   body {
     background-color: lightblue;
