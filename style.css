@@ -15,7 +15,12 @@ h3 {
     background-color: rgb(49, 49, 61);
     color: rgb(172, 108, 108);
     align-self: center;
-    margin-left: 85%;
+    margin-left: 0%;
+}
+
+.bottom{
+  width: 560px;
+  padding-left: 2px;
 }
 
 .grid {
@@ -83,29 +88,39 @@ h3 {
 
 @media screen and (max-width: 1200px) {
   body {
-    background-color: lightblue;
+    background-color: black;
   }
 
   .container {
     padding-left: 240px;
     padding-right: 240px;
   }
+
+  .bottom{
+    width: 560px;
+    padding-left: 2px;
+  }
 }
 
 @media screen and (max-width: 900px) {
   body {
-    background-color: lightblue;
+    background-color: black;
   }
 
   .container {
     padding-left: 0px;
     padding-right: 0px;
   }
+
+  .bottom{
+    width: 560px;
+    padding-left: 2px;
+  }
 }
 
 @media screen and (max-width: 600px) {
   body {
-    background-color: lightblue;
+    background-color: black;
   }
 
   .container {
@@ -125,5 +140,10 @@ h3 {
   .grid div {
     width: 15px;
     height: 15px;
+  }
+
+  .bottom{
+    width: 420px;
+    padding-left: 2px;
   }
 }
