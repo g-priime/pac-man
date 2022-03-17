@@ -80,3 +80,28 @@ h3 {
   background-color: yellow;
   border-radius: 10px;
 }
+
+@media screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+
+  .container {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 420px;
+    height: 420px;
+    border: solid black;
+    background-color: black;
+  }
+
+  .grid div {
+    width: 15px;
+    height: 15px;
+  }
+}
